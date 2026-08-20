@@ -1,0 +1,72 @@
+{
+  "logs": [
+    {
+      "account_id": "svc-invoice-bot-prod",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-01T09:01:00Z", "action": "read", "resource": "invoices" },
+        { "timestamp": "2026-08-03T09:05:00Z", "action": "read", "resource": "invoices" },
+        { "timestamp": "2026-08-10T09:01:00Z", "action": "read", "resource": "invoices" },
+        { "timestamp": "2026-08-11T10:15:00Z", "action": "write", "resource": "payments" },
+        { "timestamp": "2026-08-11T10:16:00Z", "action": "approve", "resource": "payments" },
+        { "timestamp": "2026-08-12T08:40:00Z", "action": "write", "resource": "payments" },
+        { "timestamp": "2026-08-12T08:41:00Z", "action": "approve", "resource": "payments" }
+      ]
+    },
+    {
+      "account_id": "test-key-2023-legacy",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-02T02:14:00Z", "action": "read", "resource": "customers" },
+        { "timestamp": "2026-08-09T03:47:00Z", "action": "read", "resource": "hr_salaries" }
+      ]
+    },
+    {
+      "account_id": "svc-support-copilot",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-01T11:00:00Z", "action": "read", "resource": "tickets" },
+        { "timestamp": "2026-08-04T11:20:00Z", "action": "read", "resource": "customers" },
+        { "timestamp": "2026-08-06T12:00:00Z", "action": "write", "resource": "knowledge_base" },
+        { "timestamp": "2026-08-13T15:22:00Z", "action": "read", "resource": "hr_salaries" }
+      ]
+    },
+    {
+      "account_id": "svc-hr-analytics-agent",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-01T08:00:00Z", "action": "read", "resource": "hr_salaries" },
+        { "timestamp": "2026-08-02T08:05:00Z", "action": "read", "resource": "employees" },
+        { "timestamp": "2026-08-05T09:00:00Z", "action": "write", "resource": "hr_reports" },
+        { "timestamp": "2026-08-14T10:00:00Z", "action": "write", "resource": "payroll" },
+        { "timestamp": "2026-08-14T10:01:00Z", "action": "approve", "resource": "payroll" }
+      ]
+    },
+    {
+      "account_id": "svc-devops-deployer",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-01T06:00:00Z", "action": "read", "resource": "deployments" },
+        { "timestamp": "2026-08-03T06:10:00Z", "action": "write", "resource": "deployments" },
+        { "timestamp": "2026-08-05T06:20:00Z", "action": "read", "resource": "infrastructure" },
+        { "timestamp": "2026-08-07T06:30:00Z", "action": "read", "resource": "logs" }
+      ]
+    },
+    {
+      "account_id": "api-key-marketing-dashboard",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-02T14:00:00Z", "action": "read", "resource": "campaigns" },
+        { "timestamp": "2026-08-06T14:10:00Z", "action": "read", "resource": "analytics" }
+      ]
+    },
+    {
+      "account_id": "svc-vendor-onboarding-bot",
+      "activity_period_days": 30,
+      "events": [
+        { "timestamp": "2026-08-02T09:00:00Z", "action": "create", "resource": "vendor" },
+        { "timestamp": "2026-08-09T09:30:00Z", "action": "read", "resource": "invoices" }
+      ]
+    }
+  ]
+}

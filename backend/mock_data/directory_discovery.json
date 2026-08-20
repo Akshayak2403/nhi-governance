@@ -1,0 +1,80 @@
+{
+  "scan_id": "DIR-2026-0812",
+  "environment": "production",
+  "discovered_accounts": [
+    {
+      "account_id": "svc-invoice-bot-prod",
+      "type": "service_account",
+      "owner_agent": "Invoice Processing Agent",
+      "registered_purpose": "Invoice Processing",
+      "granted_permissions": [
+        "read:invoices",
+        "read:hr_salaries",
+        "write:payments",
+        "approve:payments"
+      ]
+    },
+    {
+      "account_id": "test-key-2023-legacy",
+      "type": "api_key",
+      "owner_agent": null,
+      "registered_purpose": null,
+      "granted_permissions": ["read:all_data"]
+    },
+    {
+      "account_id": "svc-support-copilot",
+      "type": "service_account",
+      "owner_agent": "Customer Support Bot",
+      "registered_purpose": "Customer Support Bot",
+      "granted_permissions": [
+        "read:tickets",
+        "read:customers",
+        "write:knowledge_base",
+        "read:hr_salaries"
+      ]
+    },
+    {
+      "account_id": "svc-hr-analytics-agent",
+      "type": "service_account",
+      "owner_agent": "HR Analytics Agent",
+      "registered_purpose": "HR Analytics",
+      "granted_permissions": [
+        "read:hr_salaries",
+        "read:employees",
+        "write:hr_reports",
+        "write:payroll",
+        "approve:payroll"
+      ]
+    },
+    {
+      "account_id": "svc-devops-deployer",
+      "type": "service_account",
+      "owner_agent": "DevOps Automation Agent",
+      "registered_purpose": "DevOps Automation",
+      "granted_permissions": [
+        "read:deployments",
+        "write:deployments",
+        "read:infrastructure",
+        "read:logs"
+      ]
+    },
+    {
+      "account_id": "api-key-marketing-dashboard",
+      "type": "api_key",
+      "owner_agent": null,
+      "registered_purpose": null,
+      "granted_permissions": ["read:campaigns", "read:analytics", "read:customers"]
+    },
+    {
+      "account_id": "svc-vendor-onboarding-bot",
+      "type": "service_account",
+      "owner_agent": "Vendor Onboarding Agent",
+      "registered_purpose": "Invoice Processing",
+      "granted_permissions": [
+        "create:vendor",
+        "approve:vendor",
+        "read:invoices"
+      ]
+    }
+  ]
+}

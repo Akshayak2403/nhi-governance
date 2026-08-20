@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1180 640" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#5c7086"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="640" fill="#0a0e14"/>
+
+  <!-- Title -->
+  <text x="30" y="34" fill="#e8eef5" font-size="18" font-weight="700">NHI Governance — System Architecture</text>
+  <text x="30" y="54" fill="#5c7086" font-size="12">discovery → ingestion → evaluation pipeline → dashboard</text>
+
+  <!-- Mock data sources -->
+  <rect x="30" y="90" width="230" height="90" rx="8" fill="#131b28" stroke="#324156"/>
+  <text x="145" y="115" fill="#8ea0b5" font-size="11" text-anchor="middle">MOCK CLOUD DATA</text>
+  <text x="145" y="140" fill="#e8eef5" font-size="12.5" text-anchor="middle">directory_discovery.json</text>
+  <text x="145" y="160" fill="#e8eef5" font-size="12.5" text-anchor="middle">activity_logs.json</text>
+
+  <line x1="260" y1="135" x2="330" y2="135" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Upload UI -->
+  <rect x="330" y="90" width="230" height="90" rx="8" fill="#131b28" stroke="#324156"/>
+  <text x="445" y="115" fill="#8ea0b5" font-size="11" text-anchor="middle">SCREEN 1 · REACT</text>
+  <text x="445" y="140" fill="#e8eef5" font-size="12.5" text-anchor="middle">Discovery &amp; Upload UI</text>
+  <text x="445" y="160" fill="#5c7086" font-size="11" text-anchor="middle">multipart file upload</text>
+
+  <line x1="445" y1="180" x2="445" y2="230" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- FastAPI ingestion -->
+  <rect x="300" y="230" width="290" height="80" rx="8" fill="#131b28" stroke="#33d6ff" stroke-opacity="0.4"/>
+  <text x="445" y="253" fill="#33d6ff" font-size="11" text-anchor="middle">FASTAPI · /api/ingest/*</text>
+  <text x="445" y="276" fill="#e8eef5" font-size="12.5" text-anchor="middle">Ingestion Layer</text>
+  <text x="445" y="296" fill="#5c7086" font-size="11" text-anchor="middle">normalizes JSON → ORM rows</text>
+
+  <line x1="445" y1="310" x2="445" y2="360" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- DB -->
+  <rect x="330" y="360" width="230" height="80" rx="8" fill="#131b28" stroke="#324156"/>
+  <text x="445" y="383" fill="#8ea0b5" font-size="11" text-anchor="middle">POSTGRESQL (SQLAlchemy)</text>
+  <text x="445" y="406" fill="#e8eef5" font-size="12.5" text-anchor="middle">Identity · ActivityEvent</text>
+  <text x="445" y="424" fill="#e8eef5" font-size="12.5" text-anchor="middle">RiskFinding · ScanRun</text>
+
+  <line x1="560" y1="270" x2="660" y2="270" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="660" y1="270" x2="660" y2="380" stroke="#5c7086" stroke-width="1.5"/>
+  <line x1="660" y1="380" x2="560" y2="400" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Risk engine -->
+  <rect x="660" y="230" width="290" height="210" rx="8" fill="#131b28" stroke="#ff5c72" stroke-opacity="0.4"/>
+  <text x="805" y="253" fill="#ff5c72" font-size="11" text-anchor="middle">POLICY-DRIVEN RISK ENGINE</text>
+  <text x="805" y="276" fill="#e8eef5" font-size="12.5" text-anchor="middle">risk_engine.py</text>
+
+  <rect x="678" y="290" width="254" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="805" y="310" fill="#e8eef5" font-size="11.5" text-anchor="middle">1. Orphan Identity Check</text>
+
+  <rect x="678" y="326" width="254" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="805" y="346" fill="#e8eef5" font-size="11.5" text-anchor="middle">2. Least Privilege (granted vs used)</text>
+
+  <rect x="678" y="362" width="254" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="805" y="382" fill="#e8eef5" font-size="11.5" text-anchor="middle">3. Segregation of Duties</text>
+
+  <rect x="678" y="398" width="254" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="805" y="418" fill="#e8eef5" font-size="11.5" text-anchor="middle">4. Purpose Boundary Check</text>
+
+  <text x="805" y="450" fill="#5c7086" font-size="10.5" text-anchor="middle">config.py: SOD_CONFLICT_PAIRS, PURPOSE_ALLOWED_RESOURCES</text>
+
+  <line x1="805" y1="440" x2="805" y2="490" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Findings back to DB -->
+  <text x="820" y="470" fill="#5c7086" font-size="10">writes RiskFinding rows</text>
+
+  <!-- API responses -->
+  <rect x="660" y="490" width="290" height="70" rx="8" fill="#131b28" stroke="#324156"/>
+  <text x="805" y="513" fill="#8ea0b5" font-size="11" text-anchor="middle">FASTAPI · /api/identities, /api/agents/:id/risk</text>
+  <text x="805" y="536" fill="#e8eef5" font-size="12.5" text-anchor="middle">Read/Query API (Pydantic schemas)</text>
+
+  <line x1="805" y1="560" x2="805" y2="590" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="805" y1="590" x2="330" y2="590" stroke="#5c7086" stroke-width="1.5"/>
+  <line x1="330" y1="590" x2="330" y2="380" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Dashboard UI -->
+  <rect x="30" y="230" width="230" height="210" rx="8" fill="#131b28" stroke="#33d6ff" stroke-opacity="0.4"/>
+  <text x="145" y="253" fill="#33d6ff" font-size="11" text-anchor="middle">SCREEN 2 · REACT</text>
+  <text x="145" y="278" fill="#e8eef5" font-size="12.5" text-anchor="middle">Agent Risk Dashboard</text>
+  <rect x="48" y="296" width="194" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="145" y="316" fill="#e8eef5" font-size="11" text-anchor="middle">Granted vs Used table</text>
+  <rect x="48" y="332" width="194" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="145" y="352" fill="#e8eef5" font-size="11" text-anchor="middle">Activity Timeline</text>
+  <rect x="48" y="368" width="194" height="30" rx="5" fill="#0f1520" stroke="#232f40"/>
+  <text x="145" y="388" fill="#e8eef5" font-size="11" text-anchor="middle">Plain-language Findings</text>
+  <text x="145" y="420" fill="#5c7086" font-size="10.5" text-anchor="middle">reads from /api/agents/:id/risk</text>
+
+  <line x1="145" y1="440" x2="145" y2="590" stroke="#5c7086" stroke-width="1.5"/>
+  <line x1="145" y1="590" x2="260" y2="590" stroke="#5c7086" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <text x="30" y="620" fill="#5c7086" font-size="10.5">Screens 1 &amp; 2 both poll the same read API; the risk engine re-evaluates live per request so results never go stale.</text>
+</svg>
