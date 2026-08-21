@@ -65,8 +65,7 @@ class ActivityEvent(Base):
 
     @property
     def permission_key(self) -> str:
-        """Normalizes an event into the same 'action:resource' shape used
-        by granted_permissions, so usage can be diffed against grants."""
+        # same "action:resource" format as granted_permissions, for diffing
         return f"{self.action}:{self.resource}"
 
 

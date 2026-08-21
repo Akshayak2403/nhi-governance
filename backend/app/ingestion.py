@@ -13,12 +13,7 @@ from . import models, schemas
 
 
 def ingest_directory(db: Session, payload: schemas.DirectoryDiscoveryPayload) -> List[models.Identity]:
-    """Upserts every discovered account as an Identity row.
-
-    An identity is treated as an "orphan" when it has no owner_agent AND
-    no registered_purpose -- i.e. nothing in the directory scan links it
-    to a known AI agent or human owner.
-    """
+    # is_orphan = no owner and no purpose set in the directory scan
     saved: List[models.Identity] = []
     for acc in payload.discovered_accounts:
         existing = db.query(models.Identity).filter(
@@ -55,14 +50,7 @@ def ingest_directory(db: Session, payload: schemas.DirectoryDiscoveryPayload) ->
 
 
 def ingest_activity_logs(db: Session, payload: schemas.ActivityLogBatchPayload) -> int:
-    """Replaces stored activity events for each account_id present in the
-    payload with the freshly-uploaded set, so re-uploading a log file
-    doesn't create duplicate events. Returns the number of events stored.
-
-    Events for account_ids that are not (yet) registered identities are
-    still stored -- an activity log for an unmapped credential is itself
-    useful signal (e.g. confirms an orphan key is actually being used).
-    """
+    # clears old events per account_id first so re-uploading doesn't duplicate
     total = 0
     for log in payload.logs:
         db.query(models.ActivityEvent).filter(
