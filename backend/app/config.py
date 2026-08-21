@@ -1,12 +1,8 @@
-"""
-Policy configuration for the NHI Governance evaluation engine.
 
-Keeping these as data (not hardcoded logic) is what makes the engine
-"flexible enough to support different permission structures, policy
-rules, and activity log formats" as required by the problem statement.
-A real deployment would load this from a database table so security
-teams can edit policy without a code deploy.
-"""
+#Policy rules for the risk engine. Kept as data here so adding a new
+# rule doesn't mean touching risk_engine.py. Would move to a DB table
+# if this went further.
+
 
 # --- Segregation of Duties (SoD) ---
 # Each tuple is a pair of permissions that must NEVER be held by the same

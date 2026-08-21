@@ -1,22 +1,10 @@
-"""
-Risk evaluation engine.
 
-This module is the "brain" of the NHI Governance app. It takes identities
-that have already been ingested + mapped to activity events, and runs a
-set of independent policy checks against each one:
+#Risk evaluation engine.
 
-    1. Orphan Identity Check      -> is this credential linked to a known owner?
-    2. Least Privilege Check      -> granted permissions vs. permissions
-                                      actually exercised in the last N days
-    3. Segregation of Duties      -> does this identity hold two permissions
-                                      that must never coexist?
-    4. Purpose Boundary Check     -> is this identity touching resources
-                                      outside its registered purpose?
+# The 4 checks: orphan identity, least privilege, segregation of duties,
+# purpose boundary. Each one returns a list of RiskFinding rows with a
+# severity + plain-language reason.
 
-Each check returns zero or more RiskFinding rows with a severity and a
-plain-language "audit reasoning" message, so a human reviewer never has to
-guess *why* something was flagged.
-"""
 from datetime import datetime, timedelta
 from typing import List
 from sqlalchemy.orm import Session
@@ -36,9 +24,8 @@ SEVERITY_INFO = "info"
 
 
 def _used_permissions(events: List[models.ActivityEvent]) -> dict:
-    """Builds a map of 'action:resource' -> most recent timestamp seen,
-    from raw activity events. This is what 'permissions actually used'
-    means operationally: an observed action against a resource."""
+    # builds action:resource -> last seen timestamp, from the raw events
+
     used = {}
     for e in events:
         key = f"{e.action}:{e.resource}"

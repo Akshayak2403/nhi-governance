@@ -24,7 +24,7 @@ export default function FileDropzone({ label, hint, icon, file, onFile }) {
       <div className="dz-icon">{icon}</div>
       <div className="dz-label">{label}</div>
       <div className="dz-hint">{hint}</div>
-      {file && <div className="dz-file">✓ {file.name}</div>}
+      {file && <div className="dz-file">{file.name}</div>}
     </div>
   );
 }

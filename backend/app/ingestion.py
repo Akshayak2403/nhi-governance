@@ -1,11 +1,11 @@
-"""
-Ingestion layer.
 
-Takes the two raw JSON payloads described in the challenge (directory
-discovery + 30-day activity logs) and maps them onto the Identity /
-ActivityEvent tables. This is deliberately separate from the risk engine:
-ingestion answers "what do we have?", the risk engine answers "is it safe?".
-"""
+#Ingestion layer
+
+# Maps the raw directory/activity JSON onto the Identity and ActivityEvent
+# tables. Kept separate from risk_engine.py - this just loads the data,
+# risk_engine decides if it's risky.
+
+
 from typing import List
 from sqlalchemy.orm import Session
 

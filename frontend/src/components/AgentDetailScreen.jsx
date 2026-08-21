@@ -54,7 +54,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
             onClick={() => onSelect(idn.account_id)}
           >
             <span className="acct-id">
-              {idn.account_id} {idn.is_orphan && "🔴"}
+              {idn.account_id} {idn.is_orphan && "(orphan)"}
             </span>
             <StatusBadge status={idn.overall_status} />
           </div>
@@ -78,7 +78,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
                   {detail.owner_agent ? (
                     <>Owned by <strong style={{ color: "var(--text)" }}>{detail.owner_agent}</strong></>
                   ) : (
-                    <span style={{ color: "var(--critical)" }}>⚠ No registered owner — orphan identity</span>
+                    <span style={{ color: "var(--critical)" }}>No registered owner — orphan identity</span>
                   )}
                   {detail.registered_purpose && <> · Purpose: {detail.registered_purpose}</>}
                 </div>
@@ -87,7 +87,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
             </div>
 
             <div className="section">
-              <div className="section-title">⚠ Risk Findings</div>
+              <div className="section-title">Risk Findings</div>
               {detail.findings.length === 0 ? (
                 <div className="finding-card" style={{ borderColor: "var(--compliant-border)", background: "var(--compliant-bg)" }}>
                   <div className="finding-title" style={{ color: "var(--compliant)" }}>
@@ -114,7 +114,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
             </div>
 
             <div className="section">
-              <div className="section-title">🔑 Permissions Granted vs. Used (Last 30 Days)</div>
+              <div className="section-title">Permissions Granted vs. Used (Last 30 Days)</div>
               {detail.permission_comparison.map((p) => (
                 <div
                   key={p.permission}
@@ -126,7 +126,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
                   </div>
                   <div className="perm-right">
                     {p.used_in_window ? (
-                      <div className="perm-used">✓ used {formatTime(p.last_used)}</div>
+                      <div className="perm-used">used {formatTime(p.last_used)}</div>
                     ) : (
                       <div className="perm-unused">— unused in window</div>
                     )}
@@ -137,7 +137,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
             </div>
 
             <div className="section">
-              <div className="section-title">🕒 Activity Timeline</div>
+              <div className="section-title">Activity Timeline</div>
               {detail.timeline.length === 0 ? (
                 <p className="panel-subtitle">No activity recorded in the last 30 days.</p>
               ) : (
@@ -148,7 +148,7 @@ export default function AgentDetailScreen({ identities, selectedAccountId, onSel
                       <div className="tl-action">
                         <b>{e.action}</b> → {e.resource}
                       </div>
-                      {e.flagged && <div className="tl-flag">🚩 {e.flag_reason}</div>}
+                      {e.flagged && <div className="tl-flag">{e.flag_reason}</div>}
                     </div>
                   ))}
                 </div>

@@ -1,9 +1,9 @@
-"""
-NHI Governance API entrypoint.
 
-Wires together the database, routers, and CORS so the React frontend
-(running on a different origin during development) can call the API.
-"""
+#NHI Governance API entrypoint.
+
+# App entrypoint - creates tables, sets up CORS, mounts the routers.
+
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

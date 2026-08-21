@@ -53,21 +53,21 @@ export default function DiscoveryScreen({
           <FileDropzone
             label="Directory Discovery JSON"
             hint="Discovered API keys &amp; service accounts, permissions, owners"
-            icon="🗂️"
+            icon="[dir]"
             file={dirFile}
             onFile={setDirFile}
           />
           <FileDropzone
             label="30-Day Activity Log JSON"
             hint="Per-account events: logins, API calls, DB queries"
-            icon="📜"
+            icon="[log]"
             file={actFile}
             onFile={setActFile}
           />
         </div>
         <div className="action-row">
           <button className="btn btn-primary" disabled={busy} onClick={handleRunDiscovery}>
-            {busy ? <span className="loading-spin" style={{ width: 14, height: 14 }} /> : "▶"} Run Discovery Scan
+            {busy ? <span className="loading-spin" style={{ width: 14, height: 14 }} /> : null} Run Discovery Scan
           </button>
           {status && (
             <span className={`status-line ${status.type === "err" ? "err" : status.type === "ok" ? "ok" : ""}`}>

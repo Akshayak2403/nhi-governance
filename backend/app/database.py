@@ -1,15 +1,9 @@
-"""
-Database engine/session setup.
 
-Uses SQLAlchemy so the underlying database is swappable. By default this
-points at a local SQLite file for zero-friction local dev/demo, but it is
-driven entirely off the DATABASE_URL env var -- pointing that at Postgres
-(the preferred DB per the requirements) requires no code changes:
+#Database engine/session setup.
 
-    export DATABASE_URL="postgresql+psycopg2://user:pass@host:5432/nhi_gov"
+# DB session setup. Defaults to sqlite for local testing, but reads
+# DATABASE_URL if set so it works with Postgres without code changes.
 
-See README.md "Switching to PostgreSQL" for exact steps.
-"""
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base

@@ -1,9 +1,6 @@
-"""
-Screen 1 backend: Identity Register View.
+# Screen 1 - identity list + dashboard summary counts.
 
-Exposes every discovered identity with its computed compliance status,
-derived from whatever RiskFinding rows the last scan produced for it.
-"""
+
 from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session

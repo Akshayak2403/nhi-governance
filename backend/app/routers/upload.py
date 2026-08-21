@@ -1,11 +1,7 @@
-"""
-Screen 1 backend: Discovery + Asset Register ingestion endpoints.
+# Upload endpoints - accepts the directory + activity log JSON as file
+# uploads, hands off to ingestion.py.
 
-Accepts the two raw JSON payloads (directory discovery, activity logs)
-either as uploaded files (multipart/form-data, matching the "file upload"
-requirement) or as a raw JSON body, then normalizes them into the shapes
-defined in schemas.py before handing off to the ingestion layer.
-"""
+
 import json
 from typing import Optional, Union, List
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, Body

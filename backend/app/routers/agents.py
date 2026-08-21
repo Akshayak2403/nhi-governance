@@ -1,11 +1,6 @@
-"""
-Screen 2 backend: Agent Risk Analysis and Activity Dashboard.
+# Screen 2 - single identity detail: permission comparison, timeline, findings.
 
-For a single selected identity, builds:
-  - the Permissions Granted vs. Permissions Used (last 30 days) comparison
-  - a chronological activity timeline with SoD / purpose-boundary flags
-  - the full list of plain-language risk findings for that identity
-"""
+
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
